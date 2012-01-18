@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>HTML5 Video Player</title>
+
+  <link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">
+  <script src="http://vjs.zencdn.net/c/video.js"></script>
+
+  <!-- playlist stuff -->
+  <link href="design/playlist.css" rel="stylesheet" type="text/css">
+  <script src="src/playlist.js"></script>
+</head>
+
+<body>
+  <div id="vid1_playlist" class="vjs-playlist">
+    <img src="http://video-js.zencoder.com/oceans-clip.png"
+         data-poster="http://view.staging.vzaar.com/438562.thumb"
+         data-sources='[{"src":"http://video-js.zencoder.com/oceans-clip.mp4",
+         "type":"video/mp4", "media":"", "title":""}]'/>
+
+    <img src="http://view.staging.vzaar.com/438562.thumb"
+         data-poster="http://view.staging.vzaar.com/438562.thumb"
+         data-sources='[{"src":"http://view.staging.vzaar.com/438562/video",
+         "type":"video/mp4", "media":"", "title":""}]'/>
+
+    <img src="http://video-js.zencoder.com/oceans-clip.png"
+         data-poster="http://view.staging.vzaar.com/438562.thumb"
+         data-sources='[{"src":"http://video-js.zencoder.com/oceans-clip.mp4",
+         "type":"video/mp4", "media":"", "title":""}]'/>
+
+    <img src="http://view.staging.vzaar.com/438562.thumb"
+         data-poster="http://view.staging.vzaar.com/438562.thumb"
+         data-sources='[{"src":"http://view.staging.vzaar.com/438562/video",
+         "type":"video/mp4", "media":"", "title":""}]'/>
+
+    <img src="http://video-js.zencoder.com/oceans-clip.png"
+         data-poster="http://view.staging.vzaar.com/438562.thumb"
+         data-sources='[{"src":"http://video-js.zencoder.com/oceans-clip.mp4",
+         "type":"video/mp4", "media":"", "title":""}]'/>
+
+    <img src="http://view.staging.vzaar.com/438562.thumb"
+         data-poster="http://view.staging.vzaar.com/438562.thumb"
+         data-sources='[{"src":"http://view.staging.vzaar.com/438562/video",
+         "type":"video/mp4", "media":"", "title":""}]'/>
+
+  </div>
+  
+  <video id="vid1" class="video-js vjs-default-skin" controls preload="auto" width="640" height="264"
+      poster="http://video-js.zencoder.com/oceans-clip.png"
+      data-setup='{}'>
+    <source src="http://video-js.zencoder.com/oceans-clip.mp4" type='video/mp4'/>
+    <source src="http://video-js.zencoder.com/oceans-clip.webm" type='video/webm'/>
+    <source src="http://video-js.zencoder.com/oceans-clip.ogv" type='video/ogg'/>
+    <p>Video Playback Not Supported</p>
+  </video>
+  
+</body>
+</html>
