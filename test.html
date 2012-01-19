@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> 
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+    <title>vzaar html5 tester</title>
+
+    <link href="design/playlist.css" rel="stylesheet" type="text/css">
+
+    <!-- video.js -->
+    <script src="http://vjs.zencdn.net/c/video.js"></script>
+    
+    <!-- playlist -->
+    <script src="src/playlist.js"></script>
+    
+    <!-- qunit -->
+    <script type="text/javascript" src="test/qunit-git.js"></script>
+    <link rel="stylesheet" href="test/qunit-git.css" type="text/css" media="screen" charset="utf-8"></link>
+
+    <script type="text/javascript" src="test/sinon-1.2.0.js"></script>
+    <script type="text/javascript" src="test/sinon-qunit-1.0.0.js"></script>
+
+    <script type="text/javascript" src="test/mocks.js"></script>
+    <script type="text/javascript" src="test/playlist_engine_test.js"></script>
+    <script type="text/javascript"
+            src="test/playlist_test.js"></script>
+
+    <script type="text/javascript"
+            src="test/playlist_thumb_test.js"></script>
+    <!-- end qunit -->
+     
+  </head>
+
+  <body>
+    <h1 id="qunit-header">Tests</h1>
+    <h2 id="qunit-banner"></h2>
+    <h2 id="qunit-userAgent"></h2>
+    <ol id="qunit-tests"></ol>
+    
+
+
+    <div id="qunit-fixture">
+      <div id="vid1_playlist">
+        <img src="thumb1"
+             data-poster="poster1"
+             data-sources='[{"src":"src1.mp4",
+             "type":"video/mp4", "media":"", "title":""},
+             {"src":"src2.ogv",
+             "type":"video/ogg", "media":"", "title":""}]'/>
+
+        <img src="thumb2"
+             data-poster="poster2"
+             data-sources='[{"src":"src1.mp4",
+             "type":"video/mp4", "media":"", "title":""}]'/>
+      </div>
+  </body>
+</html>

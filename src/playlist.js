@@ -1,6 +1,3 @@
-// add playlist to vj's components'
-_V_.options.components.push("playlist")
-
 _V_.PlaylistEngine = _V_.Class.extend({
   init: function(player, videos) {
     this.player = player;
@@ -9,8 +6,12 @@ _V_.PlaylistEngine = _V_.Class.extend({
   },
 
   play: function(index) {
-    this.currentIndex = index;
-    this.updateVideo();
+    if (this.videos.length > 1) {
+      this.currentIndex = index;
+      this.updateVideo();
+    } else {
+      throw new Error("Playlist is empty");
+    };
   },
 
   pause: function() {
@@ -88,27 +89,16 @@ _V_.Playlist = _V_.Component.extend({
 
   show: function() {
     this.enableWebkitScrollbar();
-    // calculate width based on number of thumbs in the playlist
-    this.wrapperEl.style.width = this.calculateWrapperWidth() + "px";
-
-    // playlist width should be the same as video
+    this.setWrapperWidth();
     this.setWidth(this.player.width())
 
     this.setPosition();
     this._super();
   },
 
-  calculateWrapperWidth: function() {
-    return (this.videos.length * 155);
-  },
-
-  setPosition: function() {
-    this.el.style.bottom = this.hasScrollbar() ? "-134px" : "-124px";
-  },
-
   createElement: function() {
-    // find playlist tag
-    this.wrapperEl = document.getElementById(this.player.el.id + "_playlist");
+    this.wrapperEl = this.findPlaylistEl();
+
     var id = this.wrapperEl.attributes.id.value;
     // transform it into the wrapper tag
     this.wrapperEl.removeAttribute('id');
@@ -118,6 +108,12 @@ _V_.Playlist = _V_.Component.extend({
 
     // add playlist-wrapper to main playlist tag
     el.appendChild(this.wrapperEl);
+    return el;
+  },
+
+  findPlaylistEl: function() {
+    var el = document.getElementById(this.player.el.id + "_playlist");
+    if (!el) { throw Error("Playlist element not found") };
     return el;
   },
 
@@ -156,7 +152,27 @@ _V_.Playlist = _V_.Component.extend({
 
   setWidth: function(width) {
     this.el.style.width = width + "px";
-  }
+  },
+
+  setWrapperWidth: function() {
+    // calculate width based on number of thumbs in the playlist
+    this.wrapperEl.style.width = this.calculateWrapperWidth() + "px";
+  },
+
+  calculateWrapperWidth: function() {
+    return (this.videos.length * 155);
+  },
+
+  setPosition: function() {
+    if (this.hasScrollbar() && !(_V_.isAndroid())) {
+      var val = "-134px";
+    } else {
+      var val = "-124px";
+    };
+    this.el.style.bottom = val;
+    // add extra margin to main tag when many videos are embeded
+    this.player.el.style.marginBottom = val.slice(1);
+  },
 });
 
 _V_.PlaylistThumb = _V_.Component.extend({
