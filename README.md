@@ -1,6 +1,6 @@
 Playlist component for video.js 3 player
 
-### Installation:
+## Installation:
 
 Add playlist.js and playlist.css to your head tag, just
 after videojs:
@@ -30,7 +30,7 @@ represents playlist's video item. All necessary data required by
 video.js are included in img's data attributes. See dev.example.html
 
 
-### API
+## API
 
 API includes basic features like play/pause/next and prev methods:
 e.g
@@ -45,18 +45,18 @@ e.g
 
     _V_.players.vid1.playlist.engine.play(0)
 
-### Browser compatibility
+## Browser compatibility
 
 Tested on Chrome16/FF6/Safari5.1/iphone4S/ipad and
 asus tablet (android 3.2)
 
 
-### TODO
+## TODO
 
 - loop option
 - random play option
 
-### Issues
+## Issues
 
 If you have any issues or ideas about improvements, just let me know.
 
