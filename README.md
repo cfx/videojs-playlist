@@ -1,4 +1,4 @@
-Playlist component for [video.js](http://videojs.com) 3 player
+Playlist component for [video.js](http://github.com/zencoder/video-js) 3 player
 
 For more info about video.js go to [videojs.com](http://videojs.com)
 
