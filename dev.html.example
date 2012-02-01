@@ -11,7 +11,7 @@
   <script src="src/playlist.js"></script>
   
   <script type="text/javascript">
-    _V_.options.components.push('playlist');
+    _V_.options.components.playlist = {};
   </script>
 </head>
 <body>

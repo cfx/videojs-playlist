@@ -18,10 +18,10 @@ after videojs:
       ....
 
 
-Next, add 'playlist' component to vjs's components array:
+Next, add 'playlist' object to vjs's components:
 
     <script type="text/javascript">
-      _V_.options.components.push('playlist');
+      _V_.options.components.playlist = {};
     </script>
 
 Now put your playlist into the body tag. Playlist is represented as a
