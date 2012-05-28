@@ -17,20 +17,29 @@ after videojs:
     </head>
       ....
 
+## Embedding playlist
 
-Next, add 'playlist' object to vjs's components:
-
-    <script type="text/javascript">
-      _V_.options.components.playlist = {};
-    </script>
-
-Now put your playlist into the body tag. Playlist is represented as a
-div tag with img elements. Make sure that you
-added proper id attribute to your playlist tag (for video tag  with
-id='vid1' playlist is represented as a div with id="vid1_playlist"). Each img element
-represents playlist's video item. All necessary data required by
-video.js are included in img's data attributes. See dev.example.html
-
+Playlist should be embedded as a video's data-setup attribute e.g
+    
+    <video data-setup='{
+       "playlist": [
+          {"thumb_url":"http://video-js.zencoder.com/oceans-clip.png",
+           "poster_url":"http://video-js.zencoder.com/oceans-clip.png",
+           "sources":[
+              {"src":"http://video-js.zencoder.com/oceans-clip.mp4",
+               "type":"video/mp4",
+               "media":"",
+               "title":""
+              },
+              {"src":"http://video-js.zencoder.com/oceans-clip.ogv",
+               "type":"video/ogg",
+               "media":"",
+               "title":""
+              }
+            ]
+           }
+         ]}'
+        ...
 
 ## API
 
