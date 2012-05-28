@@ -57,14 +57,14 @@ _V_.PlaylistEngine = _V_.Class.extend({
   },
 
   updateVideoSrc: function() {
-    var sources = this.videos[this.currentIndex].sources();
+    var sources = this.videos[this.currentIndex].sources;
     // check new sources
     this.player.src(sources);
     this.player.triggerReady();
   },
 
   updateVideoPoster: function() {
-    var newPoster = this.videos[this.currentIndex].poster();
+    var newPoster = this.videos[this.currentIndex].poster_url;
     this.player.tag.poster = newPoster;
   }
 });
@@ -76,7 +76,6 @@ _V_.Playlist = _V_.Component.extend({
     // attach playlist to the player
     this.player.playlist = this;
 
-    this.videos = this.getVideos();
     // attach engine
     this.engine = new _V_.PlaylistEngine(this.player, this.videos);
     this.show();
@@ -97,23 +96,19 @@ _V_.Playlist = _V_.Component.extend({
   },
 
   createElement: function() {
-    this.wrapperEl = this.findPlaylistEl();
+    this.videos = this.getVideos();
 
-    var id = this.wrapperEl.attributes.id.value;
-    // transform it into the wrapper tag
-    this.wrapperEl.removeAttribute('id');
-    this.wrapperEl.setAttribute('class', "playlist-wrapper");
-
+    var id = this.player.el.id +"_playlist";
     var el = this._super("div", { id: id });
+    this.wrapperEl = this._super("div", { className: "playlist-wrapper" })
+
+    for (i in this.videos) {
+      var thumb = new _V_.PlaylistThumb(this.player, this.videos[i], i)
+      this.wrapperEl.appendChild(thumb.el);
+    };
 
     // add playlist-wrapper to main playlist tag
     el.appendChild(this.wrapperEl);
-    return el;
-  },
-
-  findPlaylistEl: function() {
-    var el = document.getElementById(this.player.el.id + "_playlist");
-    if (!el) { throw Error("Playlist element not found") };
     return el;
   },
 
@@ -134,20 +129,7 @@ _V_.Playlist = _V_.Component.extend({
   },
 
   getVideos: function() {
-    if (this.videos) {
-      return this.videos;
-    } else {
-      this.videos = [];
-      var videoTags = this.wrapperEl.children;
-      for (var i=0; i < videoTags.length; i++) {
-        var thumb = new _V_.PlaylistThumb(this.player, {
-          el: videoTags[i],
-          index: i
-        });
-        this.videos.push(thumb);
-      };
-    };
-    return this.videos;
+    return this.player.options.playlist;
   },
 
   setWidth: function(width) {
@@ -176,11 +158,17 @@ _V_.Playlist = _V_.Component.extend({
 });
 
 _V_.PlaylistThumb = _V_.Component.extend({
-  init: function(player, options) {
-    this._super(player, options);
+  init: function(player, params, index) {
+    this.params = params;
+    this.index = index;
+    this._super(player);
 
-    this.index = options.index;
     _V_.addEvent(this.el, "click", _V_.proxy(this, this.onClick));
+  },
+
+  createElement: function(){
+    this.el = this._super("img", { src: this.params.thumb_url });
+    return this.el;
   },
 
   onClick: function() {
@@ -188,10 +176,12 @@ _V_.PlaylistThumb = _V_.Component.extend({
   },
 
   sources: function() {
-    return JSON.parse(this.el.dataset['sources']);
+    return this.params.sources;
   },
 
   poster: function() {
-    return this.el.dataset['poster'];
+    return this.params.poster;
   }
 });
+
+_V_.options.components.playlist = {};

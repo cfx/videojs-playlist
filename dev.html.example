@@ -9,54 +9,70 @@
 
   <link href="design/playlist.css" rel="stylesheet" type="text/css">
   <script src="src/playlist.js"></script>
-  
-  <script type="text/javascript">
-    _V_.options.components.playlist = {};
-  </script>
 </head>
+
 <body>
-  <div id="vid1_playlist" class="vjs-playlist">
-    <img src="http://video-js.zencoder.com/oceans-clip.png"
-         data-poster="http://view.staging.vzaar.com/438562.thumb"
-         data-sources='[{"src":"http://video-js.zencoder.com/oceans-clip.mp4",
-         "type":"video/mp4", "media":"", "title":""},
-         {"src":"http://video-js.zencoder.com/oceans-clip.ogv",
-         "type":"video/ogg", "media":"", "title":""}]'/>
-
-    <img src="http://view.staging.vzaar.com/438562.thumb"
-         data-poster="http://view.staging.vzaar.com/438562.thumb"
-         data-sources='[{"src":"http://view.staging.vzaar.com/438562/video",
-         "type":"video/mp4", "media":"", "title":""}]'/>
-
-    <img src="http://video-js.zencoder.com/oceans-clip.png"
-         data-poster="http://view.staging.vzaar.com/438562.thumb"
-         data-sources='[{"src":"http://video-js.zencoder.com/oceans-clip.mp4",
-         "type":"video/mp4", "media":"", "title":""},
-         {"src":"http://video-js.zencoder.com/oceans-clip.ogv",
-         "type":"video/ogg", "media":"", "title":""}]'/>
-
-    <img src="http://view.staging.vzaar.com/438562.thumb"
-         data-poster="http://view.staging.vzaar.com/438562.thumb"
-         data-sources='[{"src":"http://view.staging.vzaar.com/438562/video",
-         "type":"video/mp4", "media":"", "title":""}]'/>
-
-    <img src="http://video-js.zencoder.com/oceans-clip.png"
-         data-poster="http://view.staging.vzaar.com/438562.thumb"
-         data-sources='[{"src":"http://video-js.zencoder.com/oceans-clip.mp4",
-         "type":"video/mp4", "media":"", "title":""}]'/>
-
-    <img src="http://view.staging.vzaar.com/438562.thumb"
-         data-poster="http://view.staging.vzaar.com/438562.thumb"
-         data-sources='[{"src":"http://view.staging.vzaar.com/438562/video",
-         "type":"video/mp4", "media":"", "title":""}]'/>
-  </div>
-
-  <video id="vid1" class="video-js vjs-default-skin" controls preload="auto" width="640" height="264"
-      poster="http://video-js.zencoder.com/oceans-clip.png"
-      data-setup='{}'>
+  <video id="vid1"
+         class="video-js vjs-default-skin"
+         controls
+         preload="auto"
+         width="640"
+         height="264"
+         poster="http://video-js.zencoder.com/oceans-clip.png"
+         data-setup='{"playlist":[
+                       {"thumb_url":"http://video-js.zencoder.com/oceans-clip.png",
+                        "poster_url":"http://view.staging.vzaar.com/438562.thumb",
+                        "sources":[
+                          {"src":"http://video-js.zencoder.com/oceans-clip.mp4",
+                           "type":"video/mp4",
+                           "media":"",
+                           "title":""},
+                          {"src":"http://video-js.zencoder.com/oceans-clip.ogv",
+                           "type":"video/ogg",
+                           "media":"",
+                           "title":""
+                          }
+                        ]
+                       },
+                       {"thumb_url":"http://view.staging.vzaar.com/438562.thumb",
+                        "poster_url":"http://view.staging.vzaar.com/438562.thumb",
+                        "sources":[
+                          {"src":"http://view.staging.vzaar.com/438562/video",
+                           "type":"video/mp4",
+                           "media":"",
+                           "title":""}
+                         ]
+                       },
+                       {"thumb_url":"http://video-js.zencoder.com/oceans-clip.png",
+                        "poster_url":"http://view.staging.vzaar.com/438562.thumb",
+                        "sources":[
+                          {"src":"http://video-js.zencoder.com/oceans-clip.mp4",
+                           "type":"video/mp4",
+                           "media":"",
+                           "title":""}
+                         ]
+                       },
+                       {"thumb_url":"http://view.staging.vzaar.com/438562.thumb",
+                        "poster_url":"http://view.staging.vzaar.com/438562.thumb",
+                        "sources":[
+                          {"src":"http://view.staging.vzaar.com/438562/video",
+                           "type":"video/mp4",
+                           "media":"",
+                           "title":""}
+                         ]
+                       },
+                       {"thumb_url":"http://video-js.zencoder.com/oceans-clip.png",
+                        "poster_url":"http://view.staging.vzaar.com/438562.thumb",
+                        "sources":[
+                          {"src":"http://video-js.zencoder.com/oceans-clip.mp4",
+                           "type":"video/mp4",
+                           "media":"",
+                           "title":""}
+                         ]
+                       }
+                      ]
+                     }'>
     <source src="http://video-js.zencoder.com/oceans-clip.mp4" type='video/mp4'/>
-    <source src="http://video-js.zencoder.com/oceans-clip.webm" type='video/webm'/>
-    <source src="http://video-js.zencoder.com/oceans-clip.ogv" type='video/ogg'/>
     <p>Video Playback Not Supported</p>
   </video>
 </body>
