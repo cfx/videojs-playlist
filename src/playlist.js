@@ -83,8 +83,8 @@ _V_.Playlist = _V_.Component.extend({
 
   play:  function(index) { this.engine.play(index) },
   pause: function() { this.player.pause() },
-  next:  function() { this.playlist.next() },
-  prev:  function() { this.playlist.prev() },
+  next:  function() { this.engine.next() },
+  prev:  function() { this.engine.prev() },
 
   show: function() {
     this.enableWebkitScrollbar();
