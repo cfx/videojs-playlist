@@ -7,9 +7,37 @@ function mkPlayer() {
     width: function(){},
     src:   function(sources){},
     triggerReady: function(){},
+    options: {
+      "playlist": mkPlaylist()
+    },
     tag: { poster: "poster" },
     el: { id: "vid1", style: {} }
   };
+};
+
+function mkPlaylist(){
+  return [
+    {"thumb_url":"thumb.url",
+     "poster_url":"poster.url",
+     "sources":[
+       {"src":"video.src",
+        "type":"video/mp4",
+        "media":"",
+        "title":""
+       }
+     ]
+    },
+    {"thumb_url":"thumb.url2",
+     "poster_url":"poster.url2",
+     "sources":[
+       {"src":"video.src2",
+        "type":"video/mp4",
+        "media":"",
+        "title":""
+       }
+     ]
+    }
+  ]
 };
 
 function mkVideo(src) {
@@ -25,8 +53,7 @@ function videos() {
 
 function mkThumb() {
   var player = mkPlayer();
-  var el = document.getElementById(player.el.id + "_playlist").children[0];
-  var options = { index: 0, el: el };
-  var obj = new _V_.PlaylistThumb(player, options);
+  var playlist = player.options.playlist;
+  var obj = new _V_.PlaylistThumb(player, playlist[0], 0);
   return obj;
 };

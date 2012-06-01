@@ -180,7 +180,7 @@ _V_.PlaylistThumb = _V_.Component.extend({
   },
 
   poster: function() {
-    return this.params.poster;
+    return this.params.poster_url;
   }
 });
 
