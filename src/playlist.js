@@ -30,9 +30,12 @@ _V_.PlaylistEngine = _V_.Class.extend({
 
   reload: function() {
     this.pause();
-    this.player.load();
     var that = this;
-    setTimeout(function() { that.player.play() }, 500);
+    this.player.addEvent("loadedmetadata", function() { //"loadedmetadata" event is triggered when the video is ready
+      that.player.play();
+      that.player.removeEvent("loadedmetadata", arguments.callee); //unbind this event
+    });
+    this.player.load();
   },
 
   incrementCurrentIndex: function() {
