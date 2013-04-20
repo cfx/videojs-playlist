@@ -103,8 +103,10 @@ _V_.Playlist = _V_.Component.extend({
     this.wrapperEl = this._super("div", { className: "playlist-wrapper" })
 
     for (i in this.videos) {
-      var thumb = new _V_.PlaylistThumb(this.player, this.videos[i], i)
-      this.wrapperEl.appendChild(thumb.el);
+      if (this.videos.hasOwnProperty(i)) {
+        var thumb = new _V_.PlaylistThumb(this.player, this.videos[i], i)
+        this.wrapperEl.appendChild(thumb.el);
+      }
     };
 
     // add playlist-wrapper to main playlist tag
